@@ -41,13 +41,20 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.logo i {
-  font-size: 2.2rem;
-  color: #facc15;
-  filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.6));
+/* Logo Image Styles */
+.logo-image {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
 }
 
 .logo span {
@@ -58,6 +65,12 @@ header {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.logo-fallback {
+  font-size: 2.2rem;
+  color: #facc15;
+  filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.6));
 }
 
 .nav-links {
@@ -514,6 +527,14 @@ header {
     justify-content: center;
   }
   
+  .logo-image {
+    height: 35px;
+  }
+  
+  .logo span {
+    font-size: 1.5rem;
+  }
+  
   .hero h1 {
     font-size: 2.3rem;
   }
@@ -539,6 +560,18 @@ header {
 @media (max-width: 480px) {
   .container {
     padding: 0 16px;
+  }
+  
+  .logo {
+    gap: 8px;
+  }
+  
+  .logo-image {
+    height: 30px;
+  }
+  
+  .logo span {
+    font-size: 1.3rem;
   }
   
   .hero h1 {
