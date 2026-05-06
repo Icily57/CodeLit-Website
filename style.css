@@ -316,50 +316,157 @@ header {
   text-align: center;
 }
 
-.contact-form {
-  flex: 1 1 300px;
-  background: #1e293b;
-  padding: 28px;
-  border-radius: 24px;
+/* Social Icons */
+.social-icons {
+  margin-top: 18px;
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.social-link {
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.2);
+}
+
+.social-link .fa-whatsapp {
+  font-size: 1.8rem;
+  color: #25D366;
+}
+
+.social-link .fa-twitter {
+  font-size: 1.8rem;
+  color: #1DA1F2;
+}
+
+.social-link .fa-linkedin-in {
+  font-size: 1.8rem;
+  color: #0A66C2;
+}
+
+/* Form Styles */
+.contact-form-wrapper {
+  flex: 1 1 380px;
+}
+
+.contact-form {
+  background: #1e293b;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
   background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 14px;
+  border: 2px solid #334155;
+  border-radius: 12px;
   padding: 14px 16px;
   color: white;
   font-size: 1rem;
+  font-family: inherit;
   outline: none;
-  transition: 0.2s;
+  transition: all 0.3s ease;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus {
   border-color: #facc15;
-  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.1);
+  background: #0f172a;
 }
 
-.contact-form button {
-  background: #facc15;
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #64748b;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
   color: #0f172a;
   font-weight: 700;
-  border: none;
-  padding: 14px;
-  border-radius: 40px;
   font-size: 1.1rem;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: 0.2s;
-  margin-top: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
 }
 
-.contact-form button:hover {
-  background: #fbbf24;
-  letter-spacing: 0.3px;
+.submit-btn:hover {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(250, 204, 21, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-success-message {
+  display: none;
+  background: #059669;
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.form-success-message.show {
+  display: block;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .footer-note {
@@ -371,17 +478,87 @@ header {
   padding-top: 25px;
 }
 
-@media (max-width: 700px) {
+/* Loading spinner */
+.spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(15, 23, 42, 0.3);
+  border-top-color: #0f172a;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.submit-btn.loading .spinner {
+  display: inline-block;
+}
+
+.submit-btn.loading .btn-text {
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .header-content {
     flex-direction: column;
     gap: 14px;
   }
+  
   .nav-links {
     gap: 16px;
     flex-wrap: wrap;
     justify-content: center;
   }
+  
   .hero h1 {
     font-size: 2.3rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+    padding: 0 20px;
+  }
+  
+  .contact-wrapper {
+    flex-direction: column;
+  }
+  
+  .contact-form {
+    padding: 24px;
+  }
+  
+  .contact-form-wrapper {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .contact-form {
+    padding: 20px;
+  }
+  
+  .form-group label {
+    font-size: 0.8rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 14px;
   }
 }
